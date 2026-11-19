@@ -33,3 +33,12 @@ O seed cria exclusivamente dados fictícios para a empresa “Instituto Horizont
 Use Nginx + PHP-FPM, MySQL e Redis. Configure um único scheduler (`* * * * * php /CAMINHO/artisan schedule:run`) e Supervisor para `php artisan queue:work redis --queue=webhooks,charges,notifications --tries=5 --backoff=10`. Faça backup antes do deploy, rode `php artisan migrate --force`, compile assets e reinicie workers com `php artisan queue:restart`.
 
 Integrações externas permanecem desligadas até contrato oficial e credenciais válidas. Nenhum seed, teste ou build envia WhatsApp ou cria cobranças bancárias.
+
+## Implantação aaPanel
+
+O pacote de produção para `menasaliza.botusist.net.br` está em [`deploy/aapanel`](deploy/aapanel/README.md). Após criar o PHP Project pelo Git no aaPanel, a instalação completa é executada com:
+
+```bash
+cd /www/wwwroot/menasaliza.botusist.net.br
+sudo bash deploy/aapanel/install.sh
+```
